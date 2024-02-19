@@ -1,0 +1,85 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: |
+  lamda local testing and debugging
+Resources:
+  LambdaDemoFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.functionHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: test lambda locally with sam
+      Environment:
+        Variables:
+          DB_USERNAME: root
+          DB_PASSWORD: root
+          S3BUCKETNAME: my-s3
+          S3REGION: ap-south-1
+  ApiGatewayFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.apiHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: test lambda locally with sam
+      Environment:
+        Variables:
+          DB_USERNAME: root
+          DB_PASSWORD: root
+          S3BUCKETNAME: my-s3
+          S3REGION: ap-south-1
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /users
+            Method: get
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /users
+            Method: post
+        PutEvent:
+          Type: Api
+          Properties:
+            Path: /users
+            Method: put
+        DeleteEvent:
+          Type: Api
+          Properties:
+            Path: /users
+            Method: delete
+  ApiGatewayByIdFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.apiByIdHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: test lambda locally with sam
+      Environment:
+        Variables:
+          DB_USERNAME: root
+          DB_PASSWORD: root
+          S3BUCKETNAME: my-s3
+          S3REGION: ap-south-1
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /users/{id}
+            Method: get
+        DeleteEvent:
+          Type: Api
+          Properties:
+            Path: /users/{id}
+            Method: delete
