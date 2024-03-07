@@ -1,0 +1,13 @@
+{
+  "name": "lambda-local-testing",
+  "version": "1.0.0",
+  "description": "lamda sam local boiler plate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kiran",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
