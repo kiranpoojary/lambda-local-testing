@@ -1,4 +1,4 @@
-# Lambda Template For Local Testing and Debugging
+# Lambda Boilerplate For Local Testing and Debugging
 
 ## Overview
 
